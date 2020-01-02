@@ -1,0 +1,22 @@
+{
+  "name": "demo-project",
+  "version": "1.0.0",
+  "description": "Test project with simple node service to read from local kinesis queues",
+  "main": "./lib/index.js",
+  "scripts": {
+    "app": "tsc && node ./lib/index.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robert Byatt",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^13.1.2",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.596.0",
+    "dotenv": "^8.2.0",
+    "msgpack5": "^4.2.1"
+  }
+}
