@@ -2,4 +2,4 @@ FROM node:10
 WORKDIR /app
 COPY . /app
 RUN npm install
-RUN npm run app
+CMD ["npm", "run", "app"]
