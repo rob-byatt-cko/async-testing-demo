@@ -1,5 +1,5 @@
 
-# Message queue testing demo
+# Async service testing demo
 
 This is a demo project to demonstrate the technical approach to building an integration test suite for micro-services which communicate using message queues.
 
