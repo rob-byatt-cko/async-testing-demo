@@ -22,7 +22,7 @@ export class KinesisManager {
 
     private describeStream(stream:string): Promise<AWS.Kinesis.DescribeStreamOutput> {
         let describeStreamInput: AWS.Kinesis.DescribeStreamInput = {
-            StreamName: this.environmentData.streamToRead
+            StreamName: stream
         }
         return new Promise((resolve, reject) => {
             this.kinesisInstance.describeStream(describeStreamInput, (err, data) => {

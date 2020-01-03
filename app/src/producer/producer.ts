@@ -24,7 +24,7 @@ export class Producer {
         };
         for(let record of records) {
             let decodedMessage = MessagePackHelper.decodeMessagePackData(record.Data);
-            Logger.debug('Message consumed: ' + decodedMessage);
+            Logger.debug('Data from consumed message: ' + decodedMessage);
             let formattedMessage = 'MESSAGE FOUND: ' + decodedMessage;
             let recordToAdd: AWS.Kinesis.PutRecordsRequestEntry = {
                 Data: MessagePackHelper.encodeMessagePackData(formattedMessage),

@@ -11,6 +11,8 @@ services:
     environment:
       - SERVICES=kinesis
       - KINESIS_ERROR_PROBABILITY=0.0
+    env_file:
+        - .env
     volumes:
       - ./docker-setup/localstack/:/docker-entrypoint-initaws.d/
   

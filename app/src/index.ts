@@ -4,6 +4,7 @@ import {Consumer} from './consumer/consumer';
 import {Producer} from './producer/producer';
 import { KinesisManager } from './utils/kinesisManager';
 import {Logger} from './utils/logger';
+import * as moment from 'moment';
 
 const program = async () => {
     try {
@@ -11,17 +12,18 @@ const program = async () => {
         const kinesisManager: KinesisManager = new KinesisManager(environment);
         const consumer = new Consumer(environment, kinesisManager);
         const producer = new Producer(environment, kinesisManager);
+        let count = 0;
         await kinesisManager.checkKinesisConnection();
+        Logger.info('Connected to Kinesis. Listening to queue.');
         while(true) {
             let messages = await consumer.readFromStream();
-            // await producer.generateTestReadRecord(5);
             if(messages.length >= 1) {
-                Logger.info(`${messages.length} messages consumed from queue`);
+                Logger.info(`${messages.length} messages consumed from queue.`);
                 await producer.produceResult(messages);
             }
-            else {
-                Logger.info(`No records found. Waiting ${environment.consumeIntervalMs}ms before retry`);
-            }
+            if(count % 60 === 0)
+                Logger.info('Service active ' + moment().format('DD[/]MM[/]YY HH:mm:ss'));
+            count++;
             await new Promise(resolve => setTimeout(resolve, environment.consumeIntervalMs));
         }
     }
@@ -30,5 +32,4 @@ const program = async () => {
         process.exit();
     }
 }
-
 program();

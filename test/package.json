@@ -1,0 +1,22 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "Test project for demo-application",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/cucumber-js"
+  },
+  "author": "Robert Byatt",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.597.0",
+    "chai": "^4.2.0",
+    "cucumber": "^6.0.5",
+    "cucumber-pretty": "^6.0.0",
+    "dotenv": "^8.2.0",
+    "msgpack5": "^4.2.1"
+  }
+}
