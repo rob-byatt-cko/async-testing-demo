@@ -4,7 +4,4 @@ export class Logger {
         console.log(messageToLog);
         console.log('--------------------------');
     }
-    static debug(debugMessage: string): void {
-        console.log(`DEBUG LOG: ${debugMessage}`);
-    }
 }

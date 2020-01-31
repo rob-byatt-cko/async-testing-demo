@@ -4,6 +4,7 @@ const awsHelper = require('../lib/awsHelper');
 const awsConnectionHelper = new awsHelper.AwsConnectionHelper();
 const messagePackHelper = require('../lib/messagePackHelper').MessagePackHelper;
 const expect = require('chai').expect;
+const assert = require('chai').assert;
 
 const availableStreams = {
   readStream: process.env.STREAM_TO_READ,

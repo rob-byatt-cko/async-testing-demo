@@ -62,7 +62,7 @@ class AwsConnectionHelper {
         });
     }
 
-    async waitForRecordOnKinesisStream(ShardIteratorResponse, partitionKey, maxRetry = 30, timeout = 500) {
+    async waitForRecordOnKinesisStream(ShardIteratorResponse, partitionKey, maxRetry = 10, timeout = 500) {
         let kinesisData = await this.getMessageFromMultipleShards(ShardIteratorResponse);
         let returnedPartitionKeys = this.pushAllPartitionKeysToArray(kinesisData);
         if(returnedPartitionKeys.indexOf(partitionKey) === -1 && maxRetry > 0) {
